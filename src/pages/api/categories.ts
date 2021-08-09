@@ -16,6 +16,7 @@ const handler: NextApiHandler = async (req, res) => {
       return [{ name: $a.text().trim(), key: makeCategoryKey(url) }]
     })
 
+    res.setHeader("Cache-Control","max-age=43200, stale-while-revalidate=43200")
     res.json({ categories } as Response)
   } catch (err) {
     res.status(500).send("" + err)

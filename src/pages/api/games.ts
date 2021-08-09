@@ -18,6 +18,7 @@ const handler: NextApiHandler = async (req, res) => {
       return [{ name: $a.text().trim(), key: makeGameKey(url) }]
     })
 
+    res.setHeader("Cache-Control","max-age=43200, stale-while-revalidate=43200")
     res.json({ games } as Response)
   } catch (err) {
     res.status(500).send("" + err)
