@@ -42,7 +42,7 @@ const handler: NextApiHandler = async (req, res) => {
     const $menu = $(".menu")
     const pages = extractMenu($, $menu, finalUrl)
 
-    res.setHeader("Cache-Control","max-age=43200, stale-while-revalidate=43200")
+    res.setHeader("Cache-Control", "max-age=43200, stale-while-revalidate=43200")
     res.json({ pages } as Response)
   } catch (err) {
     res.status(500).send("" + err)
